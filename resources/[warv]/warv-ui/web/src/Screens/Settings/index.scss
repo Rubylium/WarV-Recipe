@@ -1,0 +1,188 @@
+.st {
+  position: absolute;
+  left: 4vh;
+  right: 4vh;
+  top: 15vh;
+  bottom: 6vh;
+  display: flex;
+  align-items: flex-start;
+  gap: 3vh;
+  z-index: 2;
+
+  &__nav {
+    width: 30vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+  &__cat {
+    text-align: left;
+    background: rgba(10, 10, 10, 0.55);
+    border: 0;
+    border-left: 3px solid rgba(255, 255, 255, 0.22);
+    outline: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.4vh 1.6vh;
+    cursor: pointer;
+    color: #ddd;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2vh;
+    letter-spacing: 0.15vh;
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    &:hover {
+      transform: translateX(0.4vh);
+      color: #fff;
+      border-left-color: var(--warv-orange);
+      background: rgba(20, 16, 12, 0.64);
+    }
+    &--active {
+      color: #fff;
+      border-left-color: var(--warv-orange);
+      background: rgba(20, 16, 12, 0.72);
+    }
+  }
+
+  &__panel {
+    flex: 1;
+    max-height: 100%;
+    overflow-y: auto;
+    background: rgba(8, 8, 8, 0.5);
+    border-left: 3px solid var(--warv-orange);
+    padding: 2.6vh 3vh;
+    &::-webkit-scrollbar {
+      width: 0.6vh;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(233, 118, 12, 0.6);
+    }
+  }
+
+  &__sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4vh;
+  }
+  &__slider {
+    display: flex;
+    align-items: center;
+    gap: 2.4vh;
+  }
+  &__slider-label {
+    width: 22vh;
+    flex-shrink: 0;
+    font-family: var(--font-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.6vh;
+    letter-spacing: 0.12vh;
+    color: #e6e6e6;
+  }
+  &__range {
+    -webkit-appearance: none;
+    appearance: none;
+    flex: 1;
+    height: 0.7vh;
+    cursor: pointer;
+    outline: none;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 1.8vh;
+      height: 1.8vh;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 0 0 2px var(--warv-orange);
+    }
+  }
+  &__slider-val {
+    width: 7.5vh;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.9vh;
+    color: #fff;
+    b {
+      font-family: var(--font-text);
+      font-weight: 600;
+      font-size: 1.3vh;
+      color: var(--warv-orange);
+      margin-left: 0.3vh;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 1.4vh;
+    text-align: left;
+    background: rgba(15, 13, 11, 0.55);
+    border: 0;
+    border-left: 3px solid rgba(255, 255, 255, 0.18);
+    padding: 1.2vh 1.6vh;
+    cursor: pointer;
+    color: #ddd;
+    transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+    &:hover {
+      transform: translateX(0.4vh);
+      border-left-color: var(--warv-orange);
+      background: rgba(24, 19, 13, 0.7);
+      color: #fff;
+    }
+    &--active {
+      border-left-color: var(--warv-orange);
+      background: rgba(24, 19, 13, 0.7);
+      color: #fff;
+    }
+  }
+  &__row-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+  &__row-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.8vh;
+    letter-spacing: 0.1vh;
+  }
+  &__row-desc {
+    font-family: var(--font-text);
+    font-size: 1.3vh;
+    color: var(--text-dim);
+    margin-top: 0.2vh;
+  }
+  &__row-tag {
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.1vh;
+    color: #140a00;
+    background: var(--warv-orange);
+    padding: 0.2vh 0.8vh;
+  }
+  &__row-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6vh;
+    height: 2.6vh;
+    color: var(--warv-orange);
+    svg {
+      width: 1.8vh;
+      height: 1.8vh;
+    }
+  }
+}

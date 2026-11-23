@@ -1,0 +1,83 @@
+.inp {
+  position: absolute;
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -120%);
+  --inp-accent: #4ea3ff;
+  &--red {
+    --inp-accent: #ff5b52;
+  }
+
+  &__plate {
+    display: flex;
+    align-items: center;
+    gap: 0.9vh;
+    padding: 0.5vh 1.2vh 0.5vh 0.9vh;
+    background: linear-gradient(180deg, rgba(8, 10, 12, 0.72), rgba(8, 10, 12, 0.5));
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0.9vh 100%, 0 calc(100% - 0.9vh));
+    box-shadow: 0 0.4vh 1.6vh rgba(0, 0, 0, 0.55);
+    white-space: nowrap;
+    transform-origin: bottom center;
+    animation: inp-in 0.42s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+  }
+
+  &__tick {
+    width: 0.32vh;
+    align-self: stretch;
+    background: var(--inp-accent);
+    box-shadow: 0 0 1vh var(--inp-accent);
+    animation: inp-tick 0.5s cubic-bezier(0.16, 0.9, 0.3, 1) 0.08s both;
+  }
+
+  &__name {
+    font-family: var(--font-condensed, var(--font-wide));
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.9vh;
+    letter-spacing: 0.14vh;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0.15vh 0.8vh rgba(0, 0, 0, 0.9);
+    animation: inp-name 0.45s cubic-bezier(0.16, 0.9, 0.3, 1) 0.1s both;
+  }
+
+  &__plate::after {
+    content: "";
+    position: absolute;
+    left: 1.4vh;
+    bottom: -0.7vh;
+    width: 0.7vh;
+    height: 0.7vh;
+    background: rgba(8, 10, 12, 0.6);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+}
+
+@keyframes inp-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.8vh) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes inp-tick {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes inp-name {
+  from {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}

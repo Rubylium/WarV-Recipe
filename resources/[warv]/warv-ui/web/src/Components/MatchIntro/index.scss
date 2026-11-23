@@ -1,0 +1,77 @@
+.mi {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: #fff;
+  z-index: 2;
+  --mi-accent: #4ea3ff;
+  &--red {
+    --mi-accent: #ff5b52;
+  }
+
+  &__header {
+    position: absolute;
+    top: 8vh;
+    left: 5.5vh;
+    display: flex;
+    align-items: stretch;
+    gap: 1.6vh;
+  }
+
+  &__bar {
+    width: 0.4vh;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, var(--mi-accent), rgba(255, 255, 255, 0.15));
+    box-shadow: 0 0 1.4vh rgba(78, 163, 255, 0.4);
+    transform-origin: top;
+    animation: mi-bar 0.45s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+  }
+
+  &__lines {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5vh;
+  }
+  &__gm {
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.4vh;
+    letter-spacing: 0.42vh;
+    color: var(--mi-accent);
+    text-shadow: 0 0.15vh 0.9vh rgba(0, 0, 0, 0.9);
+    animation: mi-line 0.5s cubic-bezier(0.16, 0.9, 0.3, 1) 0.14s both;
+  }
+  &__map {
+    font-family: var(--font-wide, var(--font-display));
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 4vh;
+    letter-spacing: 0.08vh;
+    line-height: 1;
+    text-shadow: 0 0.3vh 1.6vh rgba(0, 0, 0, 0.8);
+    animation: mi-line 0.55s cubic-bezier(0.16, 0.9, 0.3, 1) 0.22s both;
+  }
+}
+
+@keyframes mi-bar {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+@keyframes mi-line {
+  from {
+    opacity: 0;
+    transform: translateX(-1.6vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

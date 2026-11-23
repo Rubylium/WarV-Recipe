@@ -1,0 +1,29 @@
+.shell--menu {
+  .mm__right { gap: 1.111vh; max-height: 93vh; overflow: hidden; }
+  .mm__right > * { flex-shrink: 0; }
+  .mm__right .pc__name { font-size: 2.13vh; letter-spacing: 0; }
+  .mm__right .pc__credit { font-size: 1.389vh; letter-spacing: 0; }
+  .mm__right .pc__credit b { font-weight: 400; }
+  .mm__right .fr { border-left: 3px solid var(--warv-orange); outline: none; }
+  .mm__right .sq__title, .mm__right .fr__title, .mm__patch-title { font-family: var(--font-text); font-size: 1.852vh; font-weight: 500; letter-spacing: 0.056vh; line-height: 2.407vh; }
+  .mm__right .sq__head { height: 4.129vh; }
+  .mm__right .fr__head { height: 4.239vh; }
+  .mm__patch-tag { font-weight: 500; }
+  .mm__patch-line { font-size: 1.389vh; letter-spacing: 0; }
+  .mm__challenges { margin-top: 3.759vh; }
+  .mm__challenges[hidden] { display: none; }
+  .mm__challenges .ch { position: relative; top: auto; left: auto; width: 100%; }
+  .mm__challenges .ch__head { gap: 0.5vh; justify-content: space-between; margin-bottom: 1.255vh; }
+  .mm__challenges .ch__title { font-family: var(--font-text); font-size: 1.852vh; font-weight: 500; letter-spacing: 0; line-height: 2.167vh; text-transform: none; }
+  .mm__challenges .ch__meta { font-family: var(--font-text); font-size: 1.204vh; font-weight: 400; letter-spacing: 0; text-transform: none; }
+  .mm__challenges .ch__line, .mm__challenges .ch__timer, .mm__challenges .ch__dots { display: none; }
+  .mm__challenges .ch__row { flex-direction: column; gap: 0.926vh; }
+  .mm__challenges .ch__card { flex: none; height: 8.519vh; }
+  .mm__challenges .ch__body { padding: 1.111vh 1.389vh; gap: 0.463vh; }
+  .mm__challenges .ch__name { font-family: var(--font-text); font-size: 1.574vh; font-weight: 500; line-height: 2.046vh; letter-spacing: 0; text-transform: none; }
+  .mm__challenges .ch__count, .mm__challenges .ch__count b { font-family: var(--font-text); font-size: 1.296vh; font-weight: 400; line-height: 1.685vh; letter-spacing: 0; color: var(--text-dim); }
+  .mm__challenges .ch__count b { margin-left: 0.37vh; }
+  .mm__challenges .ch__desc { font-size: 1.204vh; line-height: 1.565vh; }
+  .mm__challenges .ch__reward { margin: 0; padding: 0; border: 0; font-family: var(--font-text); font-size: 1.204vh; font-weight: 500; line-height: 1.565vh; letter-spacing: 0; text-transform: none; }
+  .mm__challenges .ch__edge { display: none; }
+}

@@ -1,0 +1,108 @@
+.sp {
+  position: absolute;
+  left: 54%;
+  top: 42%;
+  display: flex;
+  align-items: baseline;
+  gap: 1.4vh;
+  pointer-events: none;
+  z-index: 4;
+
+  &__total {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6vh;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    &--out {
+      opacity: 0;
+      transition: opacity 0.42s ease;
+    }
+  }
+  &__num {
+    display: inline-flex;
+    align-items: baseline;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 2.3vh;
+    line-height: 1;
+    color: #ffb73b;
+    text-shadow: 0 0.15vh 0.9vh rgba(0, 0, 0, 0.85);
+    transform-origin: left center;
+    animation: sp-pump 0.3s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+  }
+  &__plus {
+    font-weight: 500;
+    margin-right: 0.05vh;
+  }
+  &__xp {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.1vh;
+    letter-spacing: 0.15vh;
+    color: rgba(255, 183, 59, 0.6);
+    text-shadow: 0 0.15vh 0.7vh rgba(0, 0, 0, 0.85);
+  }
+
+  &__feed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 0.7vh;
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.3vh;
+    letter-spacing: 0.22vh;
+    color: #fff;
+    text-shadow: 0 0.15vh 0.8vh rgba(0, 0, 0, 0.9);
+    white-space: nowrap;
+
+    &--in {
+      animation: sp-label-in 0.32s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+    }
+    &--leave {
+      animation: sp-label-leave 0.42s ease both;
+    }
+  }
+  &__tick {
+    width: 0.3vh;
+    height: 1.2vh;
+    flex: none;
+    background: #ffb73b;
+    box-shadow: 0 0 0.8vh rgba(255, 183, 59, 0.5);
+  }
+}
+
+@keyframes sp-pump {
+  from {
+    transform: scale(1.35);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes sp-label-in {
+  from {
+    opacity: 0;
+    transform: translateX(-0.7vh) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes sp-label-leave {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(0.7vh);
+  }
+}

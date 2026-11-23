@@ -1,0 +1,21 @@
+.shell--menu {
+  .mm__quick { width: 87.037vh; bottom: 3.8vh; }
+  .mm__quick-head { margin-bottom: 1.255vh; }
+  .mm__quick-title { width: 15.185vh; font-family: var(--font-text); font-size: 1.852vh; font-weight: 500; line-height: 2.167vh; letter-spacing: 0; text-transform: none; }
+  .mm__quick-row { gap: 1.852vh; height: 8.148vh; }
+  .mm__quick-card {
+    flex: 1; min-width: 0; width: 27.778vh; padding: 0; display: block;
+    border: 1px solid rgba(233, 118, 12, 0.18); outline: none;
+    background: linear-gradient(110deg, rgba(233, 118, 12, 0.08), rgba(10, 10, 10, 0.6));
+    &::before { content: ""; position: absolute; top: -1px; left: 1.481vh; width: 2.407vh; height: 2px; background: var(--warv-orange); }
+    &:hover { border-color: var(--warv-orange); }
+  }
+  .mm__quick-icon-box { position: absolute; left: 0.741vh; top: 0.278vh; width: 7.037vh; height: 7.593vh; }
+  .mm__quick-text { position: absolute; left: 9.074vh; right: 1.111vh; top: 1.389vh; gap: 0; }
+  .mm__quick-label { font-family: var(--font-text); font-size: 1.944vh; font-weight: 500; line-height: 2.546vh; letter-spacing: 0; text-transform: none; white-space: nowrap; display: block; }
+  .mm__quick-meta { margin-top: 0.972vh; font-size: 1.296vh; line-height: 1.62vh; letter-spacing: 0; text-transform: none; gap: 0.556vh; }
+  .mm__quick-dot { width: 0.556vh; height: 0.556vh; box-shadow: none; }
+  .mm__quick-go { right: 1.019vh; top: 4.907vh; transform: none; color: var(--warv-orange); }
+  .mm__quick-go svg { width: 2.037vh; height: 2.037vh; }
+  .mm__quick-card:hover .mm__quick-go { transform: translateX(0.25vh); }
+}

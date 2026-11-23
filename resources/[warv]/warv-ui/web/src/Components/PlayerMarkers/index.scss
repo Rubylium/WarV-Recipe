@@ -1,0 +1,14 @@
+.pm {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  &__icon {
+    position: absolute;
+    width: auto;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 0.15vh 0.35vh rgba(0, 0, 0, 0.6));
+    user-select: none;
+  }
+}

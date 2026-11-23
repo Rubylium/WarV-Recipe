@@ -1,0 +1,61 @@
+$engine: 3
+$minFxVersion: 25770
+$onesync: on
+name: WarV
+version: v1.0.0
+author: Rubylium
+description: Call of Duty style multiplayer for FiveM. Team Deathmatch, Free for All, Gun Game.
+
+tasks:
+  - action: download_github
+    src: https://github.com/citizenfx/cfx-server-data
+    ref: e265cb251c88260533c847d4a1a2838c7d828a66
+    subpath: resources
+    dest: ./tmp/cfx
+
+  - action: move_path
+    src: ./tmp/cfx/[managers]/mapmanager
+    dest: ./resources/[cfx]/mapmanager
+
+  - action: move_path
+    src: ./tmp/cfx/[managers]/spawnmanager
+    dest: ./resources/[cfx]/spawnmanager
+
+  - action: move_path
+    src: ./tmp/cfx/[system]/sessionmanager
+    dest: ./resources/[cfx]/sessionmanager
+
+  - action: move_path
+    src: ./tmp/cfx/[gameplay]/chat-theme-gtao
+    dest: ./resources/[cfx]/chat-theme-gtao
+
+  - action: download_file
+    url: https://github.com/overextended/oxmysql/releases/download/v2.3.0/oxmysql.zip
+    path: ./tmp/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/oxmysql.zip
+    dest: ./resources/[standalone]
+
+  - action: download_github
+    src: https://github.com/mkafrin/PolyZone
+    ref: 1a36ba9a9623de2556b5752099358a2a7a326403
+    dest: ./resources/[standalone]/PolyZone
+
+  - action: download_github
+    src: https://github.com/Rubylium/WarV-Recipe
+    ref: v1.0.0
+    subpath: resources/[warv]
+    dest: ./resources/[warv]
+
+  - action: download_file
+    url: https://raw.githubusercontent.com/Rubylium/WarV-Recipe/v1.0.0/server.cfg
+    path: ./server.cfg
+
+  - action: connect_database
+
+  - action: query_database
+    file: ./resources/[warv]/warv/warv.sql
+
+  - action: remove_path
+    path: ./tmp

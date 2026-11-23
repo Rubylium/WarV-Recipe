@@ -1,0 +1,78 @@
+.cd {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2vh;
+  text-align: center;
+
+  &__label {
+    font-family: var(--font-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.4vh;
+    letter-spacing: 0.55vh;
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0.2vh 1vh rgba(0, 0, 0, 0.9);
+    animation: cd-in 0.5s ease both;
+  }
+
+  &__num {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 6vh;
+    line-height: 0.95;
+    color: #fff;
+    text-shadow: 0 0.3vh 1.4vh rgba(0, 0, 0, 0.8);
+    animation: cd-pop 0.5s cubic-bezier(0.16, 0.9, 0.3, 1) both;
+
+    &--hot {
+      color: #e9760c;
+      text-shadow: 0 0 1.8vh rgba(233, 118, 12, 0.5), 0 0.3vh 1vh rgba(0, 0, 0, 0.85);
+    }
+  }
+
+  &__rule {
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+    animation: cd-in 0.5s ease both;
+    span {
+      width: 8vh;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    }
+    i {
+      width: 0.9vh;
+      height: 0.9vh;
+      transform: rotate(45deg);
+      background: var(--warv-orange, #e9760c);
+    }
+  }
+}
+
+@keyframes cd-pop {
+  0% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes cd-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,263 @@
+$feed: #e4e6e0;
+$feed-dim: rgba(228, 230, 224, 0.66);
+
+.as {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+  animation: as-fade 0.2s ease both;
+  font-variant-numeric: tabular-nums;
+
+  &__grain {
+    position: absolute;
+    inset: -2vh;
+    background:
+      repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.09) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.014) 0 2px, transparent 2px 5px);
+    animation: as-grain 0.7s steps(2, end) infinite;
+  }
+
+  &__frame {
+    position: absolute;
+    inset: 2vh;
+    border: 1px solid rgba(228, 230, 224, 0.4);
+  }
+  &__ticks {
+    position: absolute;
+    background-repeat: repeat-x;
+  }
+  &__ticks--top,
+  &__ticks--bottom {
+    left: 2vh;
+    right: 2vh;
+    height: 0.9vh;
+    background-image: repeating-linear-gradient(to right, rgba(228, 230, 224, 0.5) 0 1px, transparent 1px 5vh);
+  }
+  &__ticks--top {
+    top: 2vh;
+  }
+  &__ticks--bottom {
+    bottom: 2vh;
+    transform: scaleY(-1);
+  }
+  &__ticks--left,
+  &__ticks--right {
+    top: 2vh;
+    bottom: 2vh;
+    width: 0.9vh;
+    background-image: repeating-linear-gradient(to bottom, rgba(228, 230, 224, 0.5) 0 1px, transparent 1px 5vh);
+  }
+  &__ticks--left {
+    left: 2vh;
+  }
+  &__ticks--right {
+    right: 2vh;
+    transform: scaleX(-1);
+  }
+
+  &__xline {
+    position: absolute;
+    left: 2vh;
+    right: 2vh;
+    height: 1px;
+    background: rgba(228, 230, 224, 0.55);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+  }
+  &__yline {
+    position: absolute;
+    top: 2vh;
+    bottom: 2vh;
+    width: 1px;
+    background: rgba(228, 230, 224, 0.55);
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.55);
+  }
+  &__gate {
+    position: absolute;
+    width: 5vh;
+    height: 5vh;
+    transform: translate(-50%, -50%);
+    border: 1px solid $feed;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.5);
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.001), rgba(0, 0, 0, 0.001));
+  }
+
+  &__blk {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35vh;
+    font-family: var(--font-condensed, var(--font-text));
+    font-weight: 500;
+    font-size: 1.45vh;
+    letter-spacing: 0.14vh;
+    color: $feed;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    span {
+      white-space: nowrap;
+    }
+  }
+  &__blk--tl {
+    top: 4vh;
+    left: 4.2vh;
+  }
+  &__blk--tr {
+    top: 4vh;
+    right: 4.2vh;
+    text-align: right;
+  }
+  &__blk--bl {
+    bottom: 4vh;
+    left: 4.2vh;
+  }
+  &__blk--br {
+    bottom: 4vh;
+    right: 4.2vh;
+    text-align: right;
+    color: $feed-dim;
+  }
+  &__armed {
+    animation: as-blink 1.6s steps(1, end) infinite;
+  }
+
+  &__mover {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+  &__mover-box {
+    display: block;
+    width: 3vh;
+    height: 3vh;
+    background:
+      linear-gradient($feed, $feed) left top / 1vh 1px,
+      linear-gradient($feed, $feed) left top / 1px 1vh,
+      linear-gradient($feed, $feed) right top / 1vh 1px,
+      linear-gradient($feed, $feed) right top / 1px 1vh,
+      linear-gradient($feed, $feed) left bottom / 1vh 1px,
+      linear-gradient($feed, $feed) left bottom / 1px 1vh,
+      linear-gradient($feed, $feed) right bottom / 1vh 1px,
+      linear-gradient($feed, $feed) right bottom / 1px 1vh;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.85));
+    opacity: 0.85;
+  }
+  &__mover-tag {
+    position: absolute;
+    left: 50%;
+    top: 3.2vh;
+    transform: translateX(-50%);
+    font-family: var(--font-condensed, var(--font-text));
+    font-size: 1vh;
+    letter-spacing: 0.12vh;
+    color: $feed-dim;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+  }
+
+  &__tgt {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+  &__tgt-flash {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 9vh;
+    height: 9vh;
+    transform: translate(-50%, -50%);
+    border: 1px solid $feed;
+    animation: as-mark 0.4s ease-out both;
+    opacity: 0;
+  }
+  &__tgt-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4.6vh;
+    height: 4.6vh;
+    transform: translate(-50%, -50%);
+    border: 1px solid $feed;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(0, 0, 0, 0.55);
+  }
+  &__tgt-cross {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2.4vh;
+    height: 2.4vh;
+    transform: translate(-50%, -50%);
+    background:
+      linear-gradient($feed, $feed) center / 100% 1px,
+      linear-gradient($feed, $feed) center / 1px 100%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.85));
+  }
+  &__tgt-tag {
+    position: absolute;
+    left: 3.2vh;
+    top: -2.4vh;
+    font-family: var(--font-condensed, var(--font-text));
+    font-size: 1.25vh;
+    letter-spacing: 0.14vh;
+    color: $feed;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    white-space: nowrap;
+  }
+
+  &__status {
+    position: absolute;
+    bottom: 4vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-condensed, var(--font-text));
+    font-weight: 600;
+    font-size: 1.7vh;
+    letter-spacing: 0.3vh;
+    color: $feed;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+  }
+  &__status-away {
+    animation: as-blink 0.7s steps(1, end) infinite;
+  }
+}
+
+@keyframes as-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes as-grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0.6vh, -0.4vh);
+  }
+  100% {
+    transform: translate(-0.4vh, 0.5vh);
+  }
+}
+@keyframes as-blink {
+  0%,
+  62% {
+    opacity: 1;
+  }
+  63%,
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes as-mark {
+  0% {
+    transform: translate(-50%, -50%) scale(1.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}

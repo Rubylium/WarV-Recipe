@@ -1,0 +1,204 @@
+.ntf-banner--medal {
+  top: 14vh;
+  filter: drop-shadow(0 0.7vh 1.1vh rgba(0, 0, 0, 0.42));
+
+  &.ntf-banner--leaving {
+    animation-duration: 0.26s;
+  }
+
+  .ntf-banner__body {
+    z-index: 1;
+    align-self: center;
+    height: 4.5vh;
+    min-width: 18vh;
+    padding: 0 7.5vh 0 2.2vh;
+
+    &::before {
+      top: 0.14vh;
+      bottom: 0.14vh;
+      left: -1.2vh;
+      background:
+        radial-gradient(circle at 8% 50%, rgba(246, 165, 42, 0.14), transparent 31%),
+        repeating-linear-gradient(
+          128deg,
+          rgba(255, 255, 255, 0.022) 0,
+          rgba(255, 255, 255, 0.022) 0.07vh,
+          transparent 0.08vh,
+          transparent 0.62vh
+        ),
+        linear-gradient(
+          100deg,
+          rgba(10, 11, 12, 0.82),
+          rgba(18, 18, 18, 0.68) 42%,
+          rgba(11, 12, 13, 0.26) 68%,
+          transparent 100%
+        );
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 40%, rgba(0, 0, 0, 0.54) 67%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 5%, #000 40%, rgba(0, 0, 0, 0.54) 67%, transparent 100%);
+      border: 0;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: auto;
+      bottom: 0.16vh;
+      left: -0.8vh;
+      width: 14vh;
+      height: 0.1vh;
+      background: linear-gradient(90deg, transparent, rgba(246, 165, 42, 0.66) 10%, rgba(246, 165, 42, 0.22) 58%, transparent);
+      transform-origin: left;
+      animation: medal-accent-in 0.65s ease-out 0.12s both;
+    }
+  }
+
+  .ntf-medal__badge {
+    z-index: 2;
+    width: 8.8vh;
+    flex: 0 0 8.8vh;
+    overflow: visible;
+    background: transparent;
+    clip-path: none;
+    box-shadow: none;
+  }
+
+  .ntf-banner__name {
+    font-family: var(--font-text);
+    font-size: 2vh;
+    font-weight: 500;
+    letter-spacing: 0.18vh;
+    text-shadow:
+      0 0.2vh 0.8vh rgba(0, 0, 0, 0.9),
+      0 0 1.2vh rgba(246, 165, 42, 0.1);
+  }
+}
+
+.ntf-medal {
+  &__badge {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5.2vh;
+      height: 5.2vh;
+      border: 1px solid rgba(225, 184, 88, 0.48);
+      transform: rotate(45deg) scale(0.45);
+      animation: medal-ring 0.9s ease-out 0.05s both;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 8.8vh;
+      height: 7.2vh;
+      background: radial-gradient(ellipse, rgba(246, 165, 42, 0.2), transparent 68%);
+      animation: medal-flare 0.85s ease-out both;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    z-index: 1;
+    width: 8.32vh;
+    height: 8.32vh;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 0.7vh rgba(246, 165, 42, 0.22))
+      drop-shadow(0 0.35vh 0.65vh rgba(0, 0, 0, 0.75));
+    animation: medal-icon-in 0.5s cubic-bezier(0.18, 1.45, 0.38, 1) 0.04s both;
+  }
+
+  &__count {
+    position: absolute;
+    z-index: 2;
+    right: -0.2vh;
+    bottom: -0.35vh;
+    min-width: 2.4vh;
+    padding: 0.16vh 0.42vh;
+    background: rgba(8, 10, 12, 0.82);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.25vh;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-align: center;
+    box-shadow: 0 0.2vh 0.4vh rgba(0, 0, 0, 0.4);
+    transform-origin: center;
+    animation: medal-count-in 0.42s cubic-bezier(0.18, 1.55, 0.38, 1) both;
+  }
+}
+
+@keyframes medal-icon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.35) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes medal-ring {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.45);
+  }
+
+  24% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) scale(1.35);
+  }
+}
+
+@keyframes medal-flare {
+  0% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+@keyframes medal-accent-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes medal-count-in {
+  0% {
+    opacity: 0;
+    transform: translateY(0.5vh) scale(0.35);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translateY(-0.08vh) scale(1.35);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

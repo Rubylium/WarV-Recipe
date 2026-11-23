@@ -1,0 +1,51 @@
+$target-feed: #e4e6e0;
+$target-feed-dim: rgba(228, 230, 224, 0.66);
+
+.target-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+
+  &__box {
+    display: block;
+    width: 3vh;
+    height: 3vh;
+    background:
+      linear-gradient($target-feed, $target-feed) left top / 1vh 1px,
+      linear-gradient($target-feed, $target-feed) left top / 1px 1vh,
+      linear-gradient($target-feed, $target-feed) right top / 1vh 1px,
+      linear-gradient($target-feed, $target-feed) right top / 1px 1vh,
+      linear-gradient($target-feed, $target-feed) left bottom / 1vh 1px,
+      linear-gradient($target-feed, $target-feed) left bottom / 1px 1vh,
+      linear-gradient($target-feed, $target-feed) right bottom / 1vh 1px,
+      linear-gradient($target-feed, $target-feed) right bottom / 1px 1vh;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.85));
+    opacity: 0.85;
+    animation: target-marker-track 1.4s steps(2, end) infinite;
+  }
+
+  &__tag {
+    position: absolute;
+    top: 3.2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-condensed, var(--font-text));
+    font-size: 1vh;
+    letter-spacing: 0.12vh;
+    color: $target-feed-dim;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+    white-space: nowrap;
+  }
+}
+
+@keyframes target-marker-track {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}

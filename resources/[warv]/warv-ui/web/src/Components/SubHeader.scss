@@ -1,0 +1,54 @@
+.subhead {
+  position: absolute;
+  top: 11.5vh;
+  left: 4vh;
+  right: 4vh;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 2vh;
+  padding-bottom: 1.4vh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: auto;
+  animation: subhead-fade 0.25s ease both;
+
+  &__back {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ddd;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1.6vh;
+    letter-spacing: 0.15vh;
+    padding: 0.5vh 1.4vh;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+    &:hover {
+      border-color: var(--warv-orange);
+      color: #fff;
+      background: rgba(233, 118, 12, 0.1);
+    }
+  }
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2.4vh;
+    letter-spacing: 0.25vh;
+    color: #fff;
+  }
+  &__right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@keyframes subhead-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

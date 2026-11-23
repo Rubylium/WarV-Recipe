@@ -1,0 +1,580 @@
+.pe {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  font-family: var(--font-text);
+  pointer-events: none;
+
+  &--pick {
+    background: linear-gradient(160deg, rgba(6, 7, 9, 0.97), rgba(10, 11, 14, 0.99));
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 5vh;
+    gap: 2vh;
+  }
+  &__pickhead {
+    display: flex;
+    align-items: center;
+    gap: 1.2vh;
+  }
+  &__picksub {
+    display: block;
+    margin-top: 0.4vh;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.2vh;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  &__grid {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(26vh, 1fr));
+    gap: 1.2vh;
+    align-content: start;
+    padding-right: 0.6vh;
+  }
+  &__card {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 0.2vh;
+    background: rgba(16, 16, 19, 0.9);
+    border-left: 0.35vh solid rgba(255, 255, 255, 0.16);
+    transition: border-color 0.12s ease, background 0.12s ease;
+    &:hover {
+      border-left-color: var(--warv-orange);
+      background: rgba(28, 22, 15, 0.95);
+    }
+  }
+  &__card-open {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6vh;
+    padding: 1.3vh;
+    background: none;
+    border: 0;
+    color: #ddd;
+    cursor: pointer;
+    text-align: left;
+  }
+  &__card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.9vh;
+    letter-spacing: 0.08vh;
+    color: #fff;
+  }
+  &__card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vh;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.1vh;
+    color: rgba(255, 255, 255, 0.55);
+    font-variant-numeric: tabular-nums;
+  }
+  &__confirm {
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+    padding: 0 1vh;
+    background: rgba(48, 14, 12, 0.9);
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    letter-spacing: 0.1vh;
+  }
+  &__tag {
+    padding: 0.25vh 0.7vh;
+    background: rgba(233, 118, 12, 0.18);
+    outline: 1px solid rgba(233, 118, 12, 0.45);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.95vh;
+    letter-spacing: 0.1vh;
+    color: #f6a52a;
+  }
+
+  &__viewport {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: auto;
+    cursor: crosshair;
+  }
+  &--looking &__viewport {
+    cursor: none;
+  }
+  &--preview &__left,
+  &--preview &__cross {
+    display: none;
+  }
+  &--gizmo {
+    display: none;
+  }
+  &__cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 0.5vh;
+    height: 0.5vh;
+    margin: -0.25vh 0 0 -0.25vh;
+    background: rgba(233, 118, 12, 0.9);
+    box-shadow: 0 0 0.6vh rgba(0, 0, 0, 0.9);
+  }
+
+  &__cap {
+    display: block;
+    font-family: var(--font-text);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.05vh;
+    letter-spacing: 0.24vh;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &__hintline {
+    font-size: 1.05vh;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  &__empty {
+    font-size: 1.15vh;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  &__status {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.16vh;
+    color: #9ad86f;
+  }
+  &__dirty {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.16vh;
+    color: #f6a52a;
+  }
+  &__speed {
+    font-family: var(--font-display);
+    font-size: 1.15vh;
+    color: rgba(255, 255, 255, 0.55);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    padding: 1.1vh 1.6vh;
+    background: rgba(6, 6, 8, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    pointer-events: auto;
+  }
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.7vh;
+    letter-spacing: 0.2vh;
+  }
+  &__spacer {
+    flex: 1;
+  }
+
+  &__left,
+  &__right {
+    position: absolute;
+    top: 7.5vh;
+    bottom: 5vh;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8vh;
+    pointer-events: auto;
+  }
+  &__left {
+    left: 1.6vh;
+    width: 25vh;
+  }
+  &__right {
+    right: 1.6vh;
+    width: 26vh;
+    overflow-y: auto;
+    padding-right: 0.4vh;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6vh;
+    flex-shrink: 0;
+    padding: 1vh;
+    background: rgba(6, 6, 8, 0.8);
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+    &--grow {
+      flex: 1;
+      min-height: 8vh;
+    }
+  }
+  &__scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vh;
+    &--short {
+      max-height: 12vh;
+    }
+  }
+  &__scroll::-webkit-scrollbar,
+  &__right::-webkit-scrollbar,
+  &__grid::-webkit-scrollbar {
+    width: 0.4vh;
+  }
+  &__scroll::-webkit-scrollbar-thumb,
+  &__right::-webkit-scrollbar-thumb,
+  &__grid::-webkit-scrollbar-thumb {
+    background: rgba(233, 118, 12, 0.5);
+  }
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    gap: 0.6vh;
+  }
+  &__tab {
+    padding: 0.3vh 0;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.14vh;
+    cursor: pointer;
+    &:hover {
+      color: #fff;
+    }
+    &--on {
+      border-bottom-color: var(--warv-orange);
+      color: #fff;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: stretch;
+    gap: 0.2vh;
+    &--on &-go {
+      border-left-color: var(--warv-orange);
+      background: rgba(233, 118, 12, 0.25);
+      color: #fff;
+    }
+  }
+  &__item-go {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6vh;
+    padding: 0.4vh 0.5vh;
+    background: rgba(20, 20, 22, 0.6);
+    border: 0;
+    border-left: 0.25vh solid transparent;
+    color: #bbb;
+    font-family: var(--font-display);
+    font-size: 1.1vh;
+    text-align: left;
+    cursor: pointer;
+    &:hover {
+      background: rgba(34, 28, 20, 0.9);
+      color: #fff;
+    }
+    &--on {
+      border-left-color: var(--warv-orange);
+      background: rgba(233, 118, 12, 0.25);
+      color: #fff;
+    }
+    &--flat {
+      cursor: default;
+      &:hover {
+        background: rgba(20, 20, 22, 0.6);
+        color: #bbb;
+      }
+    }
+  }
+  &__item-name {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__item-sub {
+    font-size: 0.95vh;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__kind {
+    flex-shrink: 0;
+    padding: 0.1vh 0.4vh;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9vh;
+    letter-spacing: 0.08vh;
+    color: #140a00;
+    background: rgba(255, 255, 255, 0.6);
+    &--ped {
+      background: #6fdcff;
+    }
+    &--vehicle {
+      background: #f6a52a;
+    }
+    &--world {
+      background: #b9b9b9;
+    }
+  }
+
+  &__selhead {
+    display: flex;
+    align-items: center;
+    gap: 0.6vh;
+    padding-left: 0.7vh;
+    border-left: 0.25vh solid var(--warv-orange);
+  }
+  &__sel-name {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.35vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4vh;
+  }
+  &__fields {
+    display: flex;
+    gap: 0.4vh;
+  }
+  &__field {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vh;
+    span {
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.9vh;
+      letter-spacing: 0.1vh;
+      color: rgba(255, 255, 255, 0.45);
+    }
+    &--wide {
+      flex: 2;
+    }
+  }
+  &__num {
+    width: 100%;
+    min-width: 0;
+    height: 2.3vh;
+    padding: 0 0.5vh;
+    background: rgba(14, 14, 16, 0.9);
+    border: 0;
+    outline: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.1vh;
+    font-variant-numeric: tabular-nums;
+    &:focus {
+      outline-color: var(--warv-orange);
+    }
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 0.4vh;
+  }
+  &__step-label {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--font-display);
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__step-value {
+    width: 3.4vh;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1vh;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__flag {
+    display: flex;
+    align-items: center;
+    gap: 0.7vh;
+    padding: 0.3vh 0;
+    background: none;
+    border: 0;
+    color: #ccc;
+    cursor: pointer;
+    text-align: left;
+    &:hover {
+      color: #fff;
+    }
+    &--on {
+      color: #fff;
+    }
+  }
+  &__box {
+    width: 1.4vh;
+    height: 1.4vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid rgba(255, 255, 255, 0.3);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2vh;
+    line-height: 1;
+  }
+  &__flag--on &__box {
+    outline-color: var(--warv-orange);
+    background: var(--warv-orange);
+    color: #140a00;
+  }
+  &__flag-name {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1.1vh;
+  }
+  &__swatch {
+    height: 0.8vh;
+    outline: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  &__pick,
+  &__input {
+    height: 2.9vh;
+    min-width: 0;
+    padding: 0 0.8vh;
+    background: rgba(14, 14, 16, 0.9);
+    border: 0;
+    outline: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.2vh;
+    letter-spacing: 0.08vh;
+    &:focus {
+      outline-color: var(--warv-orange);
+    }
+    &--wide {
+      flex: 1;
+    }
+  }
+  &__btn {
+    height: 2.9vh;
+    padding: 0 1vh;
+    background: rgba(14, 14, 16, 0.9);
+    border: 0;
+    outline: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ddd;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.08vh;
+    cursor: pointer;
+    transition: outline-color 0.14s ease, background 0.14s ease, color 0.14s ease;
+    &:hover {
+      outline-color: var(--warv-orange);
+      color: #fff;
+      background: rgba(26, 20, 14, 0.9);
+    }
+    &--go {
+      background: var(--warv-orange);
+      color: #140a00;
+      font-weight: 700;
+      outline-color: transparent;
+    }
+    &--bad {
+      color: #ff8a80;
+    }
+  }
+  &__mini {
+    flex-shrink: 0;
+    width: 2vh;
+    background: rgba(20, 20, 22, 0.6);
+    border: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-display);
+    font-size: 1.15vh;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+      background: rgba(34, 28, 20, 0.9);
+      color: #fff;
+    }
+    &--bad:hover {
+      background: rgba(48, 14, 12, 0.9);
+      color: #ff8a80;
+    }
+    &--on {
+      background: var(--warv-orange);
+      color: #140a00;
+    }
+  }
+
+  &__hint {
+    position: absolute;
+    bottom: 1.2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 0.6vh 1.4vh;
+    background: rgba(6, 6, 8, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1vh;
+    letter-spacing: 0.12vh;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+  }
+}

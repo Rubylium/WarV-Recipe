@@ -1,0 +1,70 @@
+@font-face { font-family: "Hitmarker Display"; src: url("./assets/fonts/Display/Normal/WOFF/HitmarkerNormal-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "Hitmarker Display"; src: url("./assets/fonts/Display/Normal/WOFF/HitmarkerNormal-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hitmarker Display"; src: url("./assets/fonts/Display/Normal/WOFF/HitmarkerNormal-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Hitmarker Display"; src: url("./assets/fonts/Display/Normal/WOFF/HitmarkerNormal-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Hitmarker Display"; src: url("./assets/fonts/Display/Normal/WOFF/HitmarkerNormal-Black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+@font-face { font-family: "Hitmarker Wide"; src: url("./assets/fonts/Display/Wide/WOFF/HitmarkerWide-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hitmarker Wide"; src: url("./assets/fonts/Display/Wide/WOFF/HitmarkerWide-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Hitmarker Wide"; src: url("./assets/fonts/Display/Wide/WOFF/HitmarkerWide-Black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+@font-face { font-family: "Hitmarker Condensed"; src: url("./assets/fonts/Display/Condensed/WOFF/HitmarkerCondensed-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hitmarker Condensed"; src: url("./assets/fonts/Display/Condensed/WOFF/HitmarkerCondensed-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Hitmarker Condensed"; src: url("./assets/fonts/Display/Condensed/WOFF/HitmarkerCondensed-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Hitmarker Condensed"; src: url("./assets/fonts/Display/Condensed/WOFF/HitmarkerCondensed-Black.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+
+@font-face { font-family: "Hitmarker Text"; src: url("./assets/fonts/Text/WOFF/HitmarkerText-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Hitmarker Text"; src: url("./assets/fonts/Text/WOFF/HitmarkerText-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Hitmarker Text"; src: url("./assets/fonts/Text/WOFF/HitmarkerText-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Hitmarker Text"; src: url("./assets/fonts/Text/WOFF/HitmarkerText-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face {
+  font-family: "Teko";
+  src: url("./assets/fonts/Teko-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Teko";
+  src: url("./assets/fonts/Teko-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Teko";
+  src: url("./assets/fonts/Teko-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("./assets/fonts/Oswald-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("./assets/fonts/Oswald-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Oswald";
+  src: url("./assets/fonts/Oswald-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}

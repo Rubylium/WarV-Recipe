@@ -1,0 +1,26 @@
+:root {
+  --warv-orange: rgb(233, 118, 12);
+  --warv-red: #7e0006;
+  --ink: #0a0a0a;
+  --ink-2: #14100c;
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f4f4f4;
+  --text-dim: #b9b9b9;
+
+  --font-display: "Hitmarker Display", "Teko", sans-serif;
+  --font-wide: "Hitmarker Wide", "Hitmarker Display", "Teko", sans-serif;
+  --font-condensed: "Hitmarker Condensed", "Teko", sans-serif;
+  --font-text: "Hitmarker Text", "Oswald", "Arial Narrow", sans-serif;
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+  cursor: default;
+}
+
+* {
+  border-radius: 0 !important;
+}

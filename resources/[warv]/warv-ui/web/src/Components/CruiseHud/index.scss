@@ -1,0 +1,223 @@
+.cr {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+
+  &__bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 12vh;
+    background: #000;
+  }
+  &__bar--top {
+    top: 0;
+    animation: cr-bar-top 0.4s ease both;
+  }
+  &__bar--bot {
+    bottom: 0;
+    animation: cr-bar-bot 0.4s ease both;
+  }
+
+  &__vignette {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    animation: cr-fade 0.3s ease both;
+  }
+  &__scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 3px);
+    opacity: 0.5;
+    animation: cr-flicker 4s steps(1, end) infinite;
+  }
+
+  &__feed {
+    position: absolute;
+    top: 5.5vh;
+    left: 7vh;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+  }
+  &__rec {
+    width: 1.1vh;
+    height: 1.1vh;
+    background: #ff4136;
+    box-shadow: 0 0 0.8vh rgba(255, 65, 54, 0.8);
+    animation: cr-rec 1.1s steps(1, end) infinite;
+  }
+  &__feed-label {
+    font-family: var(--font-condensed, var(--font-text));
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.6vh;
+    letter-spacing: 0.3vh;
+    color: #e8e8e2;
+    text-shadow: 0 0.15vh 0.8vh rgba(0, 0, 0, 0.9);
+  }
+
+  &__tele {
+    position: absolute;
+    top: 5.5vh;
+    right: 7vh;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vh;
+    text-align: right;
+  }
+  &__tele-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 0.8vh;
+  }
+  &__tele-k {
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.2vh;
+    color: rgba(232, 232, 226, 0.65);
+  }
+  &__tele-v {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 2.2vh;
+    color: #e8e8e2;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0.15vh 0.8vh rgba(0, 0, 0, 0.9);
+  }
+
+  &__self {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3vh;
+  }
+  &__self-ico {
+    width: 4.5vh;
+    height: 100%;
+    background: #6fdcff;
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    filter: drop-shadow(0 0 0.5vh rgba(111, 220, 255, 0.8));
+  }
+  &__self-label {
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.2vh;
+    color: #6fdcff;
+    text-shadow: 0 0.15vh 0.6vh rgba(0, 0, 0, 0.9);
+  }
+
+  &__fuel {
+    position: absolute;
+    left: 50%;
+    bottom: 9vh;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    width: 30vh;
+    height: 4.2vh;
+    padding: 0 3.4vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  &__fuel-k {
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.2vh;
+    color: #101010;
+  }
+  &__fuel-track {
+    flex: 1;
+    height: 0.7vh;
+    background: rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+  &__fuel-fill {
+    display: block;
+    height: 100%;
+    background: var(--warv-orange);
+    transition-property: width;
+    transition-timing-function: linear;
+  }
+  &__hint {
+    position: absolute;
+    left: 50%;
+    bottom: 6.2vh;
+    transform: translateX(-50%);
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.2vh;
+    letter-spacing: 0.35vh;
+    color: rgba(232, 232, 226, 0.75);
+    text-shadow: 0 0.15vh 0.8vh rgba(0, 0, 0, 0.9);
+  }
+}
+
+@keyframes cr-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes cr-bar-top {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes cr-bar-bot {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes cr-rec {
+  0%,
+  60% {
+    opacity: 1;
+  }
+  61%,
+  100% {
+    opacity: 0.25;
+  }
+}
+@keyframes cr-flicker {
+  0%,
+  92% {
+    opacity: 0.5;
+  }
+  93% {
+    opacity: 0.75;
+  }
+  94%,
+  100% {
+    opacity: 0.5;
+  }
+}

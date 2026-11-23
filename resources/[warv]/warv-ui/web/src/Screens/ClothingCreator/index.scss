@@ -1,0 +1,483 @@
+.cc {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 21vw 1fr 30vw;
+  color: var(--text);
+  font-family: var(--font-text);
+  pointer-events: none;
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  &__catalog,
+  &__editor {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9vh;
+    min-height: 0;
+    padding: 2.4vh 1.8vh;
+    background: rgba(6, 6, 8, 0.86);
+    box-shadow: 0 0 4vh rgba(0, 0, 0, 0.75);
+    pointer-events: auto;
+  }
+  &__catalog {
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  &__editor {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 0.8vh;
+    flex-shrink: 0;
+  }
+  &__cap {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.05vh;
+    letter-spacing: 0.24vh;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  &__spacer {
+    flex: 1;
+  }
+  &__empty {
+    padding: 1vh 0;
+    font-size: 1.15vh;
+    color: rgba(255, 255, 255, 0.45);
+  }
+  &__off {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 1.1vh;
+    text-transform: uppercase;
+    letter-spacing: 0.1vh;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  &__name,
+  &__input {
+    min-width: 0;
+    height: 3vh;
+    padding: 0 0.9vh;
+    background: rgba(14, 14, 16, 0.9);
+    border: 0;
+    outline: 1px solid rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.25vh;
+    letter-spacing: 0.1vh;
+    &:focus {
+      outline-color: var(--warv-orange);
+    }
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+  &__name {
+    flex: 1;
+    font-size: 1.6vh;
+    font-weight: 700;
+  }
+  &__input {
+    flex-shrink: 0;
+    width: 100%;
+  }
+
+  &__btn {
+    height: 2.9vh;
+    padding: 0 1.1vh;
+    background: rgba(14, 14, 16, 0.9);
+    border: 0;
+    outline: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ddd;
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.1vh;
+    cursor: pointer;
+    transition: outline-color 0.14s ease, background 0.14s ease, color 0.14s ease;
+    &:hover:not(:disabled) {
+      outline-color: var(--warv-orange);
+      background: rgba(26, 20, 14, 0.9);
+      color: #fff;
+    }
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+    &--go {
+      background: var(--warv-orange);
+      color: #140a00;
+      font-weight: 700;
+      outline-color: transparent;
+    }
+    &--bad {
+      color: #ff8a80;
+    }
+  }
+  &__mini {
+    flex-shrink: 0;
+    width: 2.4vh;
+    height: 2.4vh;
+    background: rgba(20, 20, 22, 0.7);
+    border: 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-display);
+    font-size: 1.3vh;
+    line-height: 1;
+    cursor: pointer;
+    &:hover:not(:disabled) {
+      background: rgba(48, 14, 12, 0.9);
+      color: #ff8a80;
+    }
+    &--armed {
+      background: var(--warv-orange);
+      color: #140a00;
+      font-weight: 700;
+    }
+  }
+
+  &__list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vh;
+  }
+  &__outfit {
+    display: flex;
+    align-items: stretch;
+    gap: 0.2vh;
+    &--on &-go {
+      border-left-color: var(--warv-orange);
+      background: rgba(233, 118, 12, 0.2);
+      color: #fff;
+    }
+  }
+  &__outfit-go {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15vh;
+    padding: 0.7vh 0.8vh;
+    background: rgba(18, 18, 20, 0.7);
+    border: 0;
+    border-left: 0.25vh solid transparent;
+    color: #ccc;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.12s ease, border-color 0.12s ease;
+    &:hover {
+      background: rgba(34, 28, 20, 0.9);
+      color: #fff;
+    }
+  }
+  &__outfit-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.3vh;
+    letter-spacing: 0.08vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__outfit-sub {
+    display: flex;
+    align-items: center;
+    gap: 0.4vh;
+  }
+  &__outfit-model {
+    flex: 1;
+    min-width: 0;
+    font-size: 1vh;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__pool {
+    padding: 0 0.4vh;
+    background: rgba(233, 118, 12, 0.22);
+    outline: 1px solid rgba(233, 118, 12, 0.55);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.95vh;
+    letter-spacing: 0.08vh;
+    color: #fff;
+  }
+
+  &__viewport {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1vh;
+    padding-bottom: 3vh;
+    pointer-events: auto;
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  &__poses {
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+    padding: 0.8vh 1vh;
+    background: rgba(6, 6, 8, 0.72);
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  &__hint {
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1vh;
+    letter-spacing: 0.14vh;
+    color: rgba(255, 255, 255, 0.45);
+    text-shadow: 0 0.1vh 0.8vh rgba(0, 0, 0, 0.9);
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 1.4vh;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  &__tab {
+    padding: 0 0 0.7vh;
+    margin-bottom: -1px;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.3vh;
+    letter-spacing: 0.18vh;
+    cursor: pointer;
+    transition: color 0.14s ease, border-color 0.14s ease;
+    &:hover {
+      color: #fff;
+    }
+    &--on {
+      color: #fff;
+      border-bottom-color: var(--warv-orange);
+    }
+  }
+
+  &__scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vh;
+    padding-right: 0.5vh;
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+    padding: 1vh;
+    background: rgba(14, 14, 16, 0.6);
+    border-left: 0.25vh solid transparent;
+    outline: 1px solid rgba(255, 255, 255, 0.07);
+    &--on {
+      border-left-color: var(--warv-orange);
+      background: rgba(26, 20, 14, 0.7);
+    }
+  }
+  &__row {
+    display: flex;
+    gap: 0.5vh;
+  }
+
+  &__slothead,
+  &__slot {
+    display: grid;
+    grid-template-columns: 2.2vh minmax(0, 1fr) 8.6vh 8.6vh 8.6vh;
+    align-items: center;
+    gap: 0.6vh;
+  }
+  &__slothead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 0 1vh 0.5vh;
+    background: rgba(6, 6, 8, 0.96);
+    span {
+      text-align: center;
+      font-weight: 500;
+      text-transform: uppercase;
+      font-size: 0.95vh;
+      letter-spacing: 0.14vh;
+      color: rgba(255, 255, 255, 0.4);
+    }
+    span:nth-child(2) {
+      text-align: left;
+    }
+  }
+  &__slot {
+    padding: 0.55vh 1vh;
+    background: rgba(14, 14, 16, 0.6);
+    outline: 1px solid rgba(255, 255, 255, 0.07);
+    &:hover {
+      background: rgba(26, 22, 18, 0.75);
+    }
+  }
+  &__slot-id {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05vh;
+    color: rgba(255, 255, 255, 0.35);
+    font-variant-numeric: tabular-nums;
+  }
+  &__slot-name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.2vh;
+    letter-spacing: 0.06vh;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &--wide {
+      grid-column: 1 / 3;
+    }
+  }
+  &__step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3vh;
+  }
+  &__step-cap {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.05vh;
+    text-transform: uppercase;
+    letter-spacing: 0.08vh;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__nudge {
+    width: 2vh;
+    height: 2.2vh;
+    flex-shrink: 0;
+    background: rgba(24, 24, 26, 0.9);
+    border: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: var(--font-display);
+    font-size: 1.4vh;
+    line-height: 1;
+    cursor: pointer;
+    &:hover {
+      background: var(--warv-orange);
+      color: #140a00;
+    }
+  }
+  &__step-val {
+    min-width: 2.9vh;
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.25vh;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+  &__step-max {
+    min-width: 2.2vh;
+    font-family: var(--font-display);
+    font-size: 0.95vh;
+    color: rgba(255, 255, 255, 0.3);
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__slide {
+    display: flex;
+    align-items: center;
+    gap: 0.6vh;
+  }
+  &__slide-cap {
+    flex: 1;
+    min-width: 0;
+    font-size: 1.05vh;
+    text-transform: uppercase;
+    letter-spacing: 0.08vh;
+    color: rgba(255, 255, 255, 0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  &__range {
+    width: 11vh;
+    height: 0.4vh;
+    flex-shrink: 0;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.16);
+    cursor: pointer;
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 0.9vh;
+      height: 1.8vh;
+      background: var(--warv-orange);
+      cursor: pointer;
+    }
+  }
+  &__slide-val {
+    min-width: 4vh;
+    text-align: right;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.15vh;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__notice {
+    flex-shrink: 0;
+    padding: 0.6vh 0.9vh;
+    background: rgba(48, 14, 12, 0.7);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.05vh;
+    letter-spacing: 0.12vh;
+    color: #ff8a80;
+    &--ok {
+      background: rgba(20, 40, 16, 0.7);
+      color: #9ad86f;
+    }
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5vh;
+    flex-shrink: 0;
+    padding-top: 0.4vh;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__list::-webkit-scrollbar,
+  &__scroll::-webkit-scrollbar {
+    width: 0.4vh;
+  }
+  &__list::-webkit-scrollbar-thumb,
+  &__scroll::-webkit-scrollbar-thumb {
+    background: rgba(233, 118, 12, 0.5);
+  }
+}

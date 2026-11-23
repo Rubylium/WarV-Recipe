@@ -1,0 +1,72 @@
+html,body {
+	background:transparent;
+}
+.multipoint {
+	display:none;
+}
+.multipoint#point-8 {
+	display:block;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translateX(-50%) translateY(-50%);
+}
+.multipoint#point-8>img {
+	opacity:0.5;
+}
+.kill-feed {
+	position:absolute;
+	bottom:35%;
+	left:100px;
+}
+.kill-feed>div {
+	padding:3px 6px 3px 6px;
+	margin:0;
+	display:inline-block;
+	float:left;
+	clear:both;
+	line-height:18px;
+	font-size:15px;
+	font-weight:normal;
+	text-decoration:none;
+	text-align:left;
+	border-radius:4px;
+	background:rgba(0, 0, 0, 0);
+	margin-bottom:6px;
+	animation: append-animate .3s linear;
+}
+
+
+
+@keyframes append-animate {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;	
+	}
+}
+
+.kill-feed div span {
+	vertical-align:middle;
+}
+.kill-feed div span.weapons>img {
+	border:none;
+	outline:none;
+	vertical-align:middle;
+	margin:0px 3px;
+}
+.kill-feed div>span.player {
+	font-family: 'Agency FB', sans-serif;
+	font-size:24px;
+	font-weight:bold;
+	margin:0 2px;
+}
+.kill-feed div>span.player.killer {
+	color: #5fb2ff;
+	padding-left:2px;
+}
+.kill-feed div>span.player.victim {
+	color: #ff5f5f;
+	padding-right:4px;
+}

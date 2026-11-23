@@ -1,0 +1,295 @@
+.kse {
+  position: absolute;
+  top: 18vh;
+  left: 5vh;
+  right: 5vh;
+  bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6vh;
+  color: var(--text);
+
+  &__label {
+    display: flex;
+    align-items: baseline;
+    gap: 1.2vh;
+    margin-bottom: 1.3vh;
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2vh;
+    letter-spacing: 0.2vh;
+    color: #fff;
+
+    b {
+      color: var(--warv-orange);
+    }
+  }
+  &__label-hint {
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.25vh;
+    letter-spacing: 0.14vh;
+    color: rgba(255, 255, 255, 0.42);
+  }
+  &__label-slot {
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.4vh;
+    letter-spacing: 0.14vh;
+    color: var(--warv-orange);
+  }
+
+  &__loadout {
+    flex-shrink: 0;
+  }
+  &__slots {
+    display: flex;
+    gap: 1.6vh;
+  }
+  &__slot {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55vh;
+    padding: 1.5vh 1.4vh 1.2vh;
+    text-align: center;
+    font: inherit;
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    background: linear-gradient(160deg, rgba(20, 20, 24, 0.72), rgba(10, 10, 12, 0.5));
+    clip-path: polygon(0 0, calc(100% - 1.4vh) 0, 100% 1.4vh, 100% 100%, 0 100%);
+    transition: background 0.2s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.16);
+      transition: background 0.2s ease;
+    }
+    &:hover {
+      background: linear-gradient(160deg, rgba(30, 30, 36, 0.78), rgba(12, 12, 15, 0.5));
+      .kse__slot-change {
+        color: var(--warv-orange);
+      }
+    }
+    &--editing {
+      background: linear-gradient(160deg, rgba(42, 24, 6, 0.85), rgba(14, 11, 8, 0.55));
+      &::before {
+        background: var(--warv-orange);
+      }
+    }
+  }
+  &__slot-tag {
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.1vh;
+    letter-spacing: 0.2vh;
+    color: rgba(255, 255, 255, 0.42);
+  }
+  &__slot-ico {
+    width: 5.6vh;
+    height: 5.6vh;
+    object-fit: contain;
+    margin: 0.2vh 0;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+  }
+  &__slot-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.85vh;
+    letter-spacing: 0.06vh;
+    color: #fff;
+  }
+  &__slot-cost {
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.3vh;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  &__slot-change {
+    margin-top: 0.5vh;
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.15vh;
+    letter-spacing: 0.16vh;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s ease;
+  }
+  &__slot--editing &__slot-change {
+    color: var(--warv-orange);
+  }
+
+  &__pick {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4vh;
+    padding-bottom: 6vh;
+    text-align: center;
+    font-family: var(--font-text);
+    font-weight: 500;
+    font-size: 1.75vh;
+    letter-spacing: 0.05vh;
+    color: rgba(255, 255, 255, 0.42);
+  }
+  &__empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4vh;
+    height: 4vh;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.6vh;
+    color: var(--warv-orange);
+    border: 2px solid rgba(233, 118, 12, 0.5);
+    transform: rotate(-90deg);
+  }
+
+  &__list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2vh;
+    overflow-y: auto;
+    padding-right: 1vh;
+    align-content: start;
+
+    &::-webkit-scrollbar {
+      width: 0.6vh;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1.3vh;
+    padding: 1.1vh 1.4vh;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    background: linear-gradient(120deg, rgba(18, 18, 22, 0.6), rgba(10, 10, 12, 0.42));
+    clip-path: polygon(0 0, calc(100% - 1.2vh) 0, 100% 1.2vh, 100% 100%, 0 100%);
+    transition: background 0.18s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.14);
+      transition: background 0.18s ease;
+    }
+    &:hover {
+      background: linear-gradient(120deg, rgba(30, 30, 36, 0.72), rgba(12, 12, 15, 0.42));
+      &::before {
+        background: var(--warv-orange);
+      }
+    }
+    &--current {
+      background: linear-gradient(120deg, rgba(38, 22, 6, 0.78), rgba(12, 10, 8, 0.45));
+      &::before {
+        background: var(--warv-orange);
+      }
+    }
+    &--locked {
+      cursor: default;
+      opacity: 0.4;
+      &:hover {
+        background: linear-gradient(120deg, rgba(18, 18, 22, 0.6), rgba(10, 10, 12, 0.42));
+        &::before {
+          background: rgba(255, 255, 255, 0.14);
+        }
+      }
+    }
+  }
+  &__card-ico {
+    width: 4.4vh;
+    height: 4.4vh;
+    flex: 0 0 auto;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+  }
+  &__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4vh;
+    min-width: 0;
+  }
+  &__card-top {
+    display: flex;
+    align-items: baseline;
+    gap: 1vh;
+  }
+  &__card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.65vh;
+    letter-spacing: 0.06vh;
+    color: #fff;
+  }
+  &__card-cost {
+    font-family: var(--font-text);
+    font-weight: 700;
+    font-size: 1.3vh;
+    color: var(--warv-orange);
+  }
+  &__card-desc {
+    font-family: var(--font-text);
+    font-weight: 400;
+    font-size: 1.25vh;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.6);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &__card-badge {
+    position: absolute;
+    top: 0.9vh;
+    right: 1vh;
+    font-family: var(--font-text);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1vh;
+    letter-spacing: 0.1vh;
+    color: rgba(255, 255, 255, 0.45);
+
+    &--current {
+      color: var(--warv-orange);
+    }
+  }
+}

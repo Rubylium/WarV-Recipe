@@ -1,0 +1,59 @@
+.status {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 53%;
+}
+.status #points,
+.status #content {
+  opacity: 0;
+  transition: all 500ms ease-in;
+}
+.glow {
+  animation: .500s glow ease forwards;
+}
+.fade {
+  animation: .4s fade ease forwards;
+}
+@keyframes glow {
+  0% {
+    opacity: 0;
+    margin-left: 100%;
+    width: 300%
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff, 0 0 75px #ffffff, 2px 2px 20px rgba(255,255,255,0);
+  }
+  55% {
+    opacity: 1;
+    text-shadow: 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff, 0 0 75px #ffffff, 2px 2px 20px rgba(255,255,255,0);
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0%;
+    width: 100%;
+    text-shadow: 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #a0a0a0, 0 0 30px #a0a0a0, 0 0 40px #a0a0a0, 0 0 55px #a0a0a0, 0 0 75px #a0a0a0, 2px 2px 20px rgba(255,255,255,0);
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+    margin-left: 100%;
+    width: 300%
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0%;
+    width: 100%;
+  }
+}

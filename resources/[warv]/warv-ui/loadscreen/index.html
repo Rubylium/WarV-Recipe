@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WARV / Multiplayer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="motion.css" />
+  <script src="howler.min.js" defer></script>
+  <script src="loading.js" defer></script>
+</head>
+<body>
+<section class="ls" id="ls">
+  <img class="ls__bg" src="loading_screen.jpg" alt="" draggable="false" />
+  <div class="ls__scrim"></div>
+  <header class="ls__header">
+    <div class="ls__brand">
+      <span class="ls__brand-accent"></span>
+      <span class="ls__wordmark">WARV</span>
+      <span class="ls__brand-label">Multiplayer</span>
+    </div>
+    <span class="ls__build">Pre-alpha / Work in progress</span>
+  </header>
+  <div class="ls__hero">
+    <p class="ls__eyebrow">Fast-paced multiplayer</p>
+    <h1 class="ls__headline">Lock in.<br />Go all in.</h1>
+    <p class="ls__description">Custom loadouts. Killstreaks. Non-stop multiplayer.</p>
+  </div>
+  <div class="ls__loader">
+    <div class="ls__loading-row">
+      <div class="ls__loading-status">
+        <p class="ls__loading-label">Preparing session</p>
+        <p class="ls__status" id="status">Loading game assets</p>
+      </div>
+      <div class="ls__percent"><span id="pct">0</span><span>%</span></div>
+    </div>
+    <div class="ls__track">
+      <div class="ls__fill" id="fill"><span class="ls__highlight-travel"><span class="ls__highlight"></span></span></div>
+    </div>
+    <div class="ls__tip">
+      <span class="ls__tip-label">Combat tip / 01</span>
+      <p class="ls__tip-copy">Reload behind cover. Reposition before your next engagement.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

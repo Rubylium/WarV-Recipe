@@ -1,0 +1,180 @@
+.pse {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--text);
+  animation: pse-fade 0.22s ease both;
+
+  &--closing {
+    animation: pse-out 0.22s ease forwards;
+    .pse__head,
+    .pse__options .pse__btn,
+    .pse__foot {
+      animation: none;
+    }
+  }
+
+  &__wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(4, 3, 2, 0.88) 0%, rgba(4, 3, 2, 0.55) 34%, rgba(4, 3, 2, 0.18) 62%, rgba(4, 3, 2, 0.35) 100%);
+  }
+  &__glow {
+    position: absolute;
+    top: -6vh;
+    left: -10vh;
+    width: 80vh;
+    height: 26vh;
+    background: radial-gradient(ellipse at 30% 50%, rgba(233, 118, 12, 0.55) 0%, rgba(233, 118, 12, 0.18) 45%, transparent 70%);
+  }
+
+  &__head {
+    position: absolute;
+    top: 6vh;
+    left: 6vh;
+    animation: pse-head-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  &__title {
+    margin: 0;
+    font-family: var(--font-wide);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 7vh;
+    letter-spacing: 0.4vh;
+    line-height: 1;
+    color: #f4efe9;
+    text-shadow: 0 0.3vh 1.8vh rgba(0, 0, 0, 0.8);
+  }
+  &__rule {
+    height: 2px;
+    margin-top: 0.8vh;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.85), transparent);
+    animation: pse-rule-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    transform-origin: left center;
+  }
+
+  &__options {
+    position: absolute;
+    top: 24vh;
+    left: 6vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4vh;
+    width: 36vh;
+  }
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4vh;
+    padding: 1.4vh 1.8vh;
+    text-align: left;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(10, 10, 10, 0.55);
+    border: 0;
+    border-left: 3px solid rgba(255, 255, 255, 0.22);
+    outline: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.13s ease, background 0.13s ease, border-color 0.13s ease, outline-color 0.13s ease;
+    animation: pse-btn-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+    &:hover {
+      transform: translateX(0.5vh);
+      border-left-color: var(--warv-orange);
+      outline-color: var(--warv-orange);
+      background: rgba(20, 16, 12, 0.64);
+    }
+
+    &--danger {
+      border-left-color: rgba(255, 80, 65, 0.5);
+      &:hover {
+        border-left-color: #ff5041;
+        outline-color: #ff5041;
+        background: rgba(40, 12, 12, 0.55);
+      }
+    }
+  }
+  &__btn-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 2.2vh;
+    letter-spacing: 0.08vh;
+    line-height: 1;
+  }
+  &__btn-sub {
+    font-family: var(--font-text);
+    text-transform: uppercase;
+    font-size: 1.25vh;
+    letter-spacing: 0.14vh;
+    color: var(--text-dim);
+  }
+
+  &__foot {
+    position: absolute;
+    left: 6vh;
+    right: 6vh;
+    bottom: 6vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+  &__foot-rule {
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.5), transparent 80%);
+  }
+  &__hint {
+    font-family: var(--font-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.3vh;
+    letter-spacing: 0.3vh;
+    color: var(--text-dim);
+  }
+}
+
+@keyframes pse-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pse-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-1.6vh);
+  }
+}
+@keyframes pse-head-in {
+  from {
+    transform: translateY(-1.6vh);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes pse-rule-in {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes pse-btn-in {
+  from {
+    transform: translateX(-2.4vh);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

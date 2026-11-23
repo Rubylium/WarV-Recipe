@@ -1,0 +1,163 @@
+$sensor: rgba(231, 234, 227, 0.88);
+$sensor-dim: rgba(231, 234, 227, 0.58);
+
+.sensor-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  color: $sensor;
+  font-family: var(--font-condensed, var(--font-text));
+  font-variant-numeric: tabular-nums;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.85);
+
+  &__mode {
+    position: absolute;
+    top: 3.4vh;
+    left: 50%;
+    display: flex;
+    align-items: baseline;
+    gap: 1.4vh;
+    transform: translateX(-50%);
+    font-size: 1.15vh;
+    letter-spacing: 0.12vh;
+    white-space: nowrap;
+
+    strong {
+      font-size: 1.45vh;
+      font-weight: 600;
+      letter-spacing: 0.16vh;
+    }
+  }
+
+  &__clock {
+    position: absolute;
+    top: 5.7vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.05vh;
+    letter-spacing: 0.18vh;
+    color: $sensor-dim;
+  }
+
+  &__stadia {
+    position: absolute;
+    inset: 8vh 8vw 8vh;
+    width: calc(100% - 16vw);
+    height: calc(100% - 16vh);
+    overflow: visible;
+    fill: $sensor;
+    stroke: none;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.8));
+
+    .sensor-overlay__lines {
+      fill: none;
+      stroke: $sensor;
+      stroke-width: 1.25;
+      vector-effect: non-scaling-stroke;
+    }
+
+    text {
+      font-family: var(--font-condensed, var(--font-text));
+      font-size: 10px;
+      letter-spacing: 1.4px;
+      stroke: none;
+    }
+  }
+
+  &__attitude {
+    position: absolute;
+    bottom: 12vh;
+    left: 12vw;
+    width: 11vh;
+    height: 11vh;
+    color: $sensor-dim;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: $sensor;
+      stroke-width: 1.2;
+      overflow: visible;
+      filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.85));
+    }
+
+    span {
+      position: absolute;
+      bottom: -1.5vh;
+      font-size: 0.95vh;
+      letter-spacing: 0.08vh;
+
+      &:first-of-type {
+        left: 0.7vh;
+      }
+
+      &:last-of-type {
+        right: 0.7vh;
+      }
+    }
+  }
+
+  &__bottom-data {
+    position: absolute;
+    right: 19vw;
+    bottom: 6.2vh;
+    display: flex;
+    gap: 2.2vh;
+    font-size: 1vh;
+    letter-spacing: 0.13vh;
+    color: $sensor-dim;
+  }
+
+  &__sweep {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 8vh;
+    background: linear-gradient(to bottom, transparent, rgba(238, 241, 232, 0.035), transparent);
+    mix-blend-mode: screen;
+    animation: sensor-sweep 5.5s linear infinite;
+  }
+
+  &__dropout {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    opacity: 0;
+    animation: sensor-dropout 3.8s steps(1, end) infinite;
+
+    &--a {
+      top: 31%;
+    }
+
+    &--b {
+      top: 68%;
+      animation-delay: 1.7s;
+    }
+  }
+}
+
+@keyframes sensor-sweep {
+  from {
+    top: -10vh;
+  }
+  to {
+    top: 105vh;
+  }
+}
+
+@keyframes sensor-dropout {
+  0%,
+  91%,
+  94%,
+  100% {
+    opacity: 0;
+  }
+  92%,
+  93% {
+    opacity: 1;
+  }
+}

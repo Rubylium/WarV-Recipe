@@ -1,0 +1,228 @@
+.kf {
+  position: absolute;
+  left: 1.2vw;
+  top: 50vh;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.kf__row {
+  overflow: hidden;
+  max-height: 6vh;
+  padding-bottom: 0.7vh;
+
+  &--enter {
+    animation: kf-enter 0.34s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  &--leaving {
+    animation: kf-leave 0.42s ease forwards;
+  }
+}
+
+.kf__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9vh;
+  padding: 0.55vh 1vh;
+  background: linear-gradient(90deg, rgba(6, 6, 8, 0.74), rgba(6, 6, 8, 0.46));
+  border-left: 2px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0.3vh 1.2vh rgba(0, 0, 0, 0.5);
+  font-family: var(--font-text);
+  font-weight: 600;
+  font-size: 1.7vh;
+  letter-spacing: 0.04vh;
+  white-space: nowrap;
+}
+
+.kf__name {
+  text-transform: uppercase;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.92);
+
+  &--friendly {
+    color: #58a6ff;
+  }
+  &--enemy {
+    color: #ff5b52;
+  }
+  &--dim {
+    color: #cfcfcf;
+  }
+}
+
+.kf__weapon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.kf__ico {
+  &--weapon {
+    height: 1.9vh;
+    width: auto;
+    max-width: 7vh;
+    object-fit: contain;
+    filter:
+      brightness(0)
+      invert(1)
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+  }
+  &--killstreak {
+    height: 2.4vh;
+    width: auto;
+    max-width: 4.8vh;
+    object-fit: contain;
+    filter:
+      brightness(0)
+      invert(1)
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+  }
+  &--suicide {
+    height: 2vh;
+    width: auto;
+    filter:
+      brightness(0)
+      invert(1)
+      drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+  }
+  &--generic {
+    width: 1.4vh;
+    height: 1.4vh;
+    background: #fff;
+    transform: rotate(45deg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  }
+}
+.kf__hs {
+  height: 1.6vh;
+  width: auto;
+  margin-left: 0.5vh;
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(39%)
+    sepia(93%)
+    saturate(4090%)
+    hue-rotate(344deg)
+    brightness(105%)
+    contrast(103%)
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+}
+
+.kf__row--mine .kf__inner {
+  border-left-color: var(--warv-orange);
+  background: linear-gradient(90deg, rgba(30, 16, 4, 0.78), rgba(6, 6, 8, 0.46));
+}
+.kf__row--headshot .kf__inner {
+  box-shadow: 0 0 1.6vh rgba(255, 62, 40, 0.35), 0 0.3vh 1.2vh rgba(0, 0, 0, 0.5);
+  animation: kf-hs-pop 0.5s ease;
+}
+.kf__row--suicide .kf__inner {
+  border-left-color: #8a8a8a;
+}
+
+.kf__streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35vh;
+  padding: 0.15vh 0.65vh 0.15vh 0.45vh;
+  margin-right: 0.3vh;
+  color: #0a0a0a;
+  background: var(--warv-orange);
+  box-shadow: 0 0 1vh rgba(233, 118, 12, 0.5);
+  animation: kf-streak-pop 0.42s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+
+  &-chevron {
+    width: 0;
+    height: 0;
+    border-left: 0.5vh solid transparent;
+    border-right: 0.5vh solid transparent;
+    border-bottom: 0.72vh solid currentColor;
+  }
+  &-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6vh;
+    line-height: 1;
+  }
+
+  &--t3 {
+    background: #ff7a1a;
+  }
+  &--t4 {
+    background: #ff4d2e;
+  }
+  &--t5 {
+    background: #ff2e2e;
+    animation: kf-streak-pop 0.42s cubic-bezier(0.16, 1, 0.3, 1) backwards,
+      kf-streak-pulse 1.1s ease-in-out 0.5s infinite;
+  }
+  &--t6 {
+    background: #ffcf40;
+    box-shadow: 0 0 1.4vh rgba(255, 207, 64, 0.7);
+    animation: kf-streak-pop 0.42s cubic-bezier(0.16, 1, 0.3, 1) backwards,
+      kf-streak-pulse 1s ease-in-out 0.5s infinite;
+  }
+}
+
+@keyframes kf-enter {
+  0% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-2.2vh);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    max-height: 6vh;
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes kf-leave {
+  0% {
+    max-height: 6vh;
+    opacity: 1;
+    transform: none;
+  }
+  100% {
+    max-height: 0;
+    opacity: 0;
+    transform: translateX(-1.6vh);
+  }
+}
+@keyframes kf-hs-pop {
+  0% {
+    transform: scale(1);
+  }
+  28% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes kf-streak-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes kf-streak-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 1vh rgba(255, 60, 40, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 2vh rgba(255, 60, 40, 0.9);
+  }
+}

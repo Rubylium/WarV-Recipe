@@ -1,0 +1,2 @@
+WeaponEditor = {}
+WeaponEditor.CurrentWeapon = {}
